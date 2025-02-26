@@ -1,27 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import Post from "./Post";
 import classes from "./PostsList.module.css";
-import { Suspense } from "react";
 
 const PostsList = () => {
   const posts = useLoaderData();
-
-  // function addPostHandler(postData) {
-  //   try {
-  //     fetch("http://localhost:8080/posts", {
-  //       method: "POST",
-  //       body: JSON.stringify(postData),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     setPosts((prevPosts) => {
-  //       return [postData, ...prevPosts];
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   const renderPosts = posts.map((post) => {
     return <Post key={post.body} author={post.author} body={post.body} />;
