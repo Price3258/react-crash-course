@@ -6,7 +6,14 @@ const PostsList = () => {
   const posts = useLoaderData();
 
   const renderPosts = posts.map((post) => {
-    return <Post key={post.body} author={post.author} body={post.body} />;
+    return (
+      <Post
+        key={post.id}
+        postId={post.id}
+        author={post.author}
+        body={post.body}
+      />
+    );
   });
 
   return (
