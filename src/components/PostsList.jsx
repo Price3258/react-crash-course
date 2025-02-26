@@ -8,9 +8,20 @@ const PostsList = ({ isPosting, onStopPosting }) => {
   const [posts, setPosts] = useState([]);
 
   function addPostHandler(postData) {
-    setPosts((prevPosts) => {
-      return [postData, ...prevPosts];
-    });
+    try {
+      fetch("http://localhost:8080/posts", {
+        method: "POST",
+        body: JSON.stringify(postData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setPosts((prevPosts) => {
+        return [postData, ...prevPosts];
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const renderPosts = posts.map((post) => {
